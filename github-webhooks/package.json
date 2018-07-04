@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "octonode": "^0.9.2"
+  },
+  "scripts": {
+    "sls": "node ../node_modules/serverless/bin/serverless"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "serverless": "^1.27.3",
+    "serverless-secrets-plugin": "^0.1.0",
+    "serverless-offline": "^3.25.5",
+    "eslint": "^5.0.1",
+    "eslint-config-google": "^0.9.1"
+  }
+}

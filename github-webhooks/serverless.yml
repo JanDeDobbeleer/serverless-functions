@@ -1,0 +1,33 @@
+service: github-webhooks
+
+plugins:
+  - serverless-offline
+  - serverless-secrets-plugin
+
+custom:
+  secrets: ${file(secrets.${opt:stage, self:provider.stage}.yml)}
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: production
+  region: eu-central-1
+  environment:
+    GITHUB_WEBHOOK_SECRET: ${self:custom.secrets.GITHUB_WEBHOOK_SECRET}
+    GITHUB_API_KEY: ${self:custom.secrets.GITHUB_API_KEY}
+
+functions:
+  fixupValidator:
+    handler: handler.fixupCommits
+    events:
+      - http:
+          path: github-fixups
+          method: post
+          cors: true
+  pythonRequirementsValidator:
+    handler: handler.pythonRequirements
+    events:
+      - http:
+          path: github-python-requirements
+          method: post
+          cors: true
