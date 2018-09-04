@@ -31,3 +31,10 @@ functions:
           path: github-python-requirements
           method: post
           cors: true
+  openTasksValidator:
+    handler: handler.openTasks
+    events:
+      - http:
+          path: github-tasks
+          method: post
+          cors: true
