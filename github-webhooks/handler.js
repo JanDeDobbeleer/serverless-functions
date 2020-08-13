@@ -1,5 +1,6 @@
 const requestValidator = require('./lib/requestValidation');
 const fixupValidator = require('./validators/fixupCommits');
+const openTaskValidator = require('./validators/openTasks');
 const pythonRequirementsValidator = require('./validators/pythonRequirements');
 
 /**
@@ -55,5 +56,16 @@ module.exports.pythonRequirements = (event, context, callback) => {
         data.pull_request.number,
         data.pull_request.head.repo.full_name,
         data.pull_request.head.sha);
+    });
+};
+
+module.exports.openTasks = (event, context, callback) => {
+  handleRequest(event, callback)
+    .then((data) => {
+      openTaskValidator.validateForOpenTasks(
+        data.pull_request.number,
+        data.pull_request.head.repo.full_name,
+        data.pull_request.head.sha,
+        data.pull_request.body);
     });
 };

@@ -29,7 +29,7 @@ Each function is configured to use serverless included in the root of the reposi
 
 ## Debugging
 
-I advice to use [Visual Studio Code][vscode] given that the debug task is included in the project, feel free to create a PR if you wan't to add other integrations. Pressing `F5` will use [serverless-offline][sol] to start a debug session and run the function.
+I advise to use [Visual Studio Code][vscode] given that the debug task is included in the project, feel free to create a PR if you wan't to add other integrations. Pressing `F5` will use [serverless-offline][sol] to start a debug session and run the function.
 
 _Beware: setting breakpoints might tell you they can't be bound, this is not true._
 
@@ -43,8 +43,10 @@ The runtime variables are included in the project. The [serverless-secrets-plugi
 
 ## Deployment
 
-You can deploy individual functions using serverless. Navigate to the function you wish to deploy and use the deploy command.
+You can deploy individual functions using serverless. Navigate to the function you wish to deploy, pull in the depencies, and use the deploy command.
 
+    $ cd github-webhooks
+    $ yarn install
     $ yarn sls deploy --verbose --aws-profile profileName
 
 [aws-setup-link]: https://serverless.com/framework/docs/providers/aws/guide/credentials#creating-aws-access-keys
